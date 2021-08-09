@@ -6,5 +6,19 @@
       <port><%= split($server, /:/)[1] %></port>
     </node>
 <% } -%>
+<% if $session_timeout { -%>
+  <session_timeout_ms><%= $session_timeout %></session_timeout_ms>
+<% } -%>
+<% if $operation_timeout { -%>
+  <operation_timeout_ms><%= $operation_timeout_ms %></operation_timeout_ms>
+<% } -%>
+<% if $root { -%>
+  <!-- Optional. Chroot suffix. Should exist. -->
+  <root><%= $root %></root>
+<% } -%>
+<% if $user and $password { -%>
+  <!-- Optional. Zookeeper digest ACL string. -->
+  <identity><%= user %>:<%= password %></identity>
+<% } -%>
   </zookeeper>
 </yandex>
